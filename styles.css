@@ -1,0 +1,185 @@
+@media (prefers-color-scheme: light) {
+  :root {
+    --return-trans-delay: 0.2s;
+    --return-trans-dur: 1s;
+    --return-trans-tf: cubic-bezier(.8,0,.2,1);
+  
+    --hover-transition: 0.3s all ease-in-out;
+    
+    --main: white;
+    --aux: black;
+
+    --accent1: #fca903;
+    --accent2: #0033FF;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --return-trans-delay: 0.2s;
+    --return-trans-dur: 1s;
+    --return-trans-tf: cubic-bezier(.8,0,.2,1);
+  
+    --hover-transition: 0.3s all ease-in-out;
+    
+    --main: black;
+    --aux: white;
+
+    --accent1: #fca903;
+    --accent2: #0033FF;
+  }
+}
+
+
+/* Makes it so clicking links to elements smoothly scrolls to them instead of teleporting. */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+html, body {
+  background: var(--main);
+  color: var(--aux);
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  cursor: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Page Navigation */
+#progress-bar {
+  position: fixed;
+}
+
+/* Cursor css */
+.cursor {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  mix-blend-mode: difference;
+}
+
+.cur-circle {
+  fill: #fff;
+}
+
+/* Class for main page sections */
+.main-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section {
+  width: 100%;
+  max-width: 1300px;
+  height: 100vh;
+}
+
+/* Class for element return transition */
+.return-transition {
+  transition-delay: var(--return-trans-delay);
+  transition-duration: var(--return-trans-dur);
+  transition-timing-function: var(--return-trans-tf);
+}
+
+/* Title page */
+#intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 20px 0 20px 0;
+  transition-property: border-radius;
+}
+
+#intro:hover {
+  border-radius: 0 20px 0 20px;
+  transition: 0.3s all ease-in-out;
+}
+
+#pfp {
+  aspect-ratio: 1/1;
+
+  height: 200px;
+  border-radius: 10% 0 10% 0;
+  border: 2px solid var(--aux);
+
+  transition-property: border-radius;
+}
+
+#intro:hover #pfp {
+  border-radius: 0 10% 0 10%;
+
+  transition: 0.3s all ease-in-out;
+}
+
+#signature {
+  height: 100%;
+  max-height: 204px;
+
+  padding-left: 20px;
+  padding-right: 10px;
+
+  border-radius: 0 0 20px 0;
+
+  transition-property: border-radius;
+}
+
+#intro:hover #signature {
+  border-radius: 0 20px 0 0;
+  transition: 0.3s all ease-in-out;
+}
+
+#name {
+  font-family: 'Poiret One', "Tahoma";
+  font-size: 50px;
+  margin: 0;
+}
+
+.sign-desc {
+  margin: 0px;
+
+  font-size: 28px;
+  font-family: 'Comfortaa', 'Arial';
+  font-weight: 300;
+
+  border-left: 2px solid var(--aux);
+  padding-left: 10px;
+  margin-left: 3px;
+}
+
+#address {
+  font-size: 20px;
+  font-family: 'Comfortaa', 'Arial';
+  font-weight: 300;
+
+  margin: 20px 0 0 0;
+}
+
+#pin {
+  aspect-ratio: 1/1;
+  height: 25px;
+  margin: -6px 0 -6px 0;
+}
+
+/* Adds basic effects to beautified text, will have to be expanded later */
+.beautify {
+  transition-property: color, text-shadow;
+  transition-duration: 4s;
+  transition-timing-function: ease-in-out;
+}
+
+.beautify:hover {
+  color: #fca903;
+  transition: 0.3s all ease-in-out;
+}

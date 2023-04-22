@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=0">
+    <link rel="icon" href="assets/pfp.png">
+    <script src="https://kit.fontawesome.com/74679502e4.js" crossorigin="anonymous"></script>
+
+    <title>Michał Fleites-Jończyk | Portfolio</title>
+    <meta name="description" content="Hi! My name is Michał Fleites-Jończyk, I'm a software developer from Poland and this website is my portfolio!">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+</head>
+<body onkeydown="javascript: onKeyDownFunc(event)" onwheel="javascript: onMouseWheelFunc(event)">
+    <nav id="progress-bar"></nav>
+    <div class="cursor">
+        <div class="cursor ball cursor__ball--big">
+            <svg height="30" width="30">
+                <circle cx="15" cy="15" r="12" stroke-width="0" class="cur-circle"></circle>
+            </svg>
+        </div>
+        <div class="cursor ball cursor__ball--small">
+            <svg height="10" width="10">
+                <circle cx="5" cy="5" r="4" stroke-width="0" class="cur-circle"></circle>
+            </svg>
+        </div>
+    </div>
+    <div class="main-section section">
+        <div id="intro" class="return-transition">
+            <img id="pfp" src="assets/negative.png" class="return-transition hoverable">
+            <div id="signature" class="return-transition">
+                <p id="name" class="hoverable"></p>
+                <p class="sign-desc">Software Developer</p>
+                <p class="sign-desc">Designer</p>
+                <p class="sign-desc">Artist</p>
+                <p id="address">based in<span id="weather"></span> Cracow, Poland</p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+    </div>
+    
+    <script src="weather.js"></script>
+    <script src="cursor.js"></script>
+    <script src="scripts.js"></script>
+    <script src="navigation.js"></script>
+    <script src="progress-bar.js"></script>
+</body>
+</html>
