@@ -2,11 +2,13 @@ const prevPageButton = document.querySelector('#prev-page');
 const nextPageButton = document.querySelector('#next-page');
 const $pages = document.querySelectorAll('.section');
 
-var currentPage = 0;
+var open_on_page = 1;
+
+var currentPage = open_on_page;
 var previousPage = 0;
 // If I don't scroll the main page into view every time, website caching will mess up the count :) Uncomment this for deployment.
 // Change to $pages[0] for deployment :)
-$pages[0].scrollIntoView();
+$pages[open_on_page].scrollIntoView();
 
 const maxPage = $pages.length;
 
@@ -98,3 +100,13 @@ function trackPagePosition() {
 };
 
 trackPagePosition()
+
+// Hide bars if window size is too small.
+function manageBarVisibility() {
+    console.log('window.innerWidth = ' + window.innerWidth)
+    if (window.innerWidth < 1500) {
+        $barNavigator.classList.add('hidden')
+    } else {
+        $barNavigator.classList.remove('hidden');
+    }
+}

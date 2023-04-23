@@ -42,6 +42,15 @@
   }
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 html, body {
   background: var(--main);
   color: var(--aux);
@@ -60,6 +69,10 @@ a {
   cursor: none;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 /* Bar Navigation */
 #progress-bar {
   position: fixed;
@@ -69,6 +82,7 @@ a {
   display: flex;
   align-items: center;
   padding: 10px;
+  transition-property: visibility;
 }
 
 .bar-img {
@@ -109,7 +123,7 @@ a {
   fill: #fff;
 }
 
-/* Class for main page sections */
+/* Classes for page sections */
 .main-section {
   display: flex;
   justify-content: center;
@@ -120,6 +134,13 @@ a {
   width: 100%;
   max-width: 1300px;
   height: 100vh;
+}
+
+.sub-section {
+  overflow: clip;
+
+  border-radius: 10px;
+  background-color: var(--aux);
 }
 
 /* Class for element return transition */
@@ -204,11 +225,7 @@ a {
   margin: 20px 0 0 0;
 }
 
-#pin {
-  aspect-ratio: 1/1;
-  height: 25px;
-  margin: -6px 0 -6px 0;
-}
+/* Subsections */
 
 /* Adds basic effects to beautified text, might expand it later */
 .beautify {
@@ -218,7 +235,9 @@ a {
 
 .beautify:hover {
   color: var(--accent1);
+
   transition-property: color, text-shadow;
   transition-timing-function: ease-in-out;
   transition-duration: 0.3s;
 }
+

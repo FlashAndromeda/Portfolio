@@ -15,9 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    
 </head>
-<body onkeydown="javascript: onKeyDownFunc(event)" onwheel="javascript: onMouseWheelFunc(event)">
+<body onkeydown="javascript: onKeyDownFunc(event)" onwheel="javascript: onMouseWheelFunc(event)" onresize="manageBarVisibility()">
     <nav id="progress-bar" class="hoverable"></nav>
     
     <div class="cursor">
@@ -47,11 +49,11 @@
     </div>
     <div class="section" id="about-page">
         <h1></h1>
-        <div class="sub-section"></div>
-        <div class="sub-section"></div>
-        <div class="sub-section"></div>
-        <div class="sub-section"></div>
-        <div class="sub-section"></div>
+        <div class="sub-section" id="sub1"></div>
+        <div class="sub-section" id="sub2"></div>
+        <div class="sub-section" id="sub3"></div>
+        <div class="sub-section" id="sub4"></div>
+        <div class="sub-section" id="sub5"></div>
     </div>
     <div class="section" id="skills-page">
     </div>
@@ -60,9 +62,9 @@
     <div class="section" id="contact-page">
     </div>
 
+    <script src="scripts.js"></script>
     <script src="weather.js"></script>
     <script src="cursor.js"></script>
-    <script src="scripts.js"></script>
     <script src="navigation.js"></script>
     <script src="progress-bar.js"></script>
 </body>
