@@ -52,9 +52,42 @@ body {
   align-items: center;
 }
 
-/* Page Navigation */
+a {
+  cursor: none;
+}
+
+/* Bar Navigation */
 #progress-bar {
   position: fixed;
+}
+
+.page-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.bar-img {
+  height: 3px;
+  width: 25px;
+
+  background: var(--aux);
+
+  border-radius: 3px;
+
+  transition-property: height, width;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.page-bar:hover > .bar-img {
+  height: 4px;
+  width: 40px;
+}
+
+.bar-img-focused {
+  height: 4px;
+  width: 40px;
 }
 
 /* Cursor css */
@@ -172,7 +205,7 @@ body {
   margin: -6px 0 -6px 0;
 }
 
-/* Adds basic effects to beautified text, will have to be expanded later */
+/* Adds basic effects to beautified text, might expand it later */
 .beautify {
   transition-property: color, text-shadow;
   transition-duration: 4s;

@@ -1,7 +1,7 @@
-function classifyText(fe, str, parent, cls) {
+function classifyText(fe, parent, str, cls) {
     // fe : decides if class should be applied for each character separately (0=No, 1=Yes)
-    // str : text content of the element
     // parent : parent element that you want the child to be attached to
+    // str : text content of the element
     // cls : class that you want to add to the child element
 
     const pnt = document.getElementById(parent);
@@ -26,4 +26,4 @@ function classifyText(fe, str, parent, cls) {
     }
 }
 
-classifyText(1, "Michał Fleites-Jończyk", "name", "beautify")
+classifyText(1, "name", "Michał Fleites-Jończyk", "beautify")
