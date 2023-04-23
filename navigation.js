@@ -5,6 +5,7 @@ const $pages = document.querySelectorAll('.section');
 var currentPage = 0;
 var previousPage = 0;
 // If I don't scroll the main page into view every time, website caching will mess up the count :) Uncomment this for deployment.
+// Change to $pages[0] for deployment :)
 $pages[0].scrollIntoView();
 
 const maxPage = $pages.length;

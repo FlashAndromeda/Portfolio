@@ -6,11 +6,12 @@
   
     --hover-transition: 0.3s all ease-in-out;
     
-    --main: rgba(0, 0, 0, 0.05);
+    /*TODO Convert to HEX!*/
+    --main: #0000000d;
     --aux: black;
 
     --accent1: #fca903;
-    --accent2: #0033FF;
+    --accent2: #0356fc;
   }
 }
 
@@ -22,6 +23,7 @@
   
     --hover-transition: 0.3s all ease-in-out;
     
+    /*TODO Convert to HEX!*/
     --main: #202124;
     --aux: white;
 
@@ -31,9 +33,11 @@
 }
 
 
+
 /* Makes it so clicking links to elements smoothly scrolls to them instead of teleporting. */
 @media (prefers-reduced-motion: no-preference) {
   * {
+    /* See if it's possible to change the timing function here, optimally a nice cubic bezier like the one used in .return-animation :) */
     scroll-behavior: smooth;
   }
 }
@@ -89,6 +93,7 @@ a {
   height: 4px;
   width: 40px;
 }
+
 
 /* Cursor css */
 .cursor {
@@ -207,12 +212,13 @@ a {
 
 /* Adds basic effects to beautified text, might expand it later */
 .beautify {
-  transition-property: color, text-shadow;
-  transition-duration: 4s;
-  transition-timing-function: ease-in-out;
+  transition-property: color;
+  transition-duration: 2s;
 }
 
 .beautify:hover {
-  color: #fca903;
-  transition: 0.3s all ease-in-out;
+  color: var(--accent1);
+  transition-property: color, text-shadow;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
 }
