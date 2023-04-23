@@ -6,7 +6,7 @@
   
     --hover-transition: 0.3s all ease-in-out;
     
-    --main: white;
+    --main: rgba(0, 0, 0, 0.05);
     --aux: black;
 
     --accent1: #fca903;
@@ -22,7 +22,7 @@
   
     --hover-transition: 0.3s all ease-in-out;
     
-    --main: rgba(0, 0, 0, 0.7);
+    --main: #202124;
     --aux: white;
 
     --accent1: #fca903;
