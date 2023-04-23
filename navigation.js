@@ -94,6 +94,6 @@ function trackPagePosition() {
     $pageMarkerImg[previousPage].classList.remove('bar-img-focused')
 
     $pageMarkerImg[currentPage].classList.add('bar-img-focused');
-}
+};
 
 trackPagePosition()
