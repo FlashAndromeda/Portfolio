@@ -2,13 +2,11 @@ const prevPageButton = document.querySelector('#prev-page');
 const nextPageButton = document.querySelector('#next-page');
 const $pages = document.querySelectorAll('.section');
 
-var open_on_page = 1;
-
-var currentPage = open_on_page;
+var currentPage = 0;
 var previousPage = 0;
-// If I don't scroll the main page into view every time, website caching will mess up the count :) Uncomment this for deployment.
+// If I don't scroll the main page into view every time, website caching will mess up the count :)
 // Change to $pages[0] for deployment :)
-$pages[open_on_page].scrollIntoView();
+$pages[0].scrollIntoView();
 
 const maxPage = $pages.length;
 

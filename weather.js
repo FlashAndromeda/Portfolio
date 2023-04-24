@@ -11,9 +11,12 @@ function updateWeather(rain, temp) {
     // Defaults to nothing in case something goes wrong with the API :) 
     let textContent = ''
 
-    if (rain < 5) {
+    if (rain < 0.1) {
         textContent += 'sunny';
         element.style.color = 'var(--accent1)';
+    } else if (rain < 2) {
+        textContent += 'cloudy'
+        element.style.color = 'var(--accent2)'; 
     } else if (5 < rain) {
         textContent += 'rainy';
         element.style.color = 'var(--accent2)';

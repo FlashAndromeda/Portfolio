@@ -32,8 +32,6 @@
   }
 }
 
-
-
 /* Makes it so clicking links to elements smoothly scrolls to them instead of teleporting. */
 @media (prefers-reduced-motion: no-preference) {
   * {
@@ -47,8 +45,8 @@
 }
 
 * {
-  -ms-overflow-style: none;
   scrollbar-width: none;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -136,11 +134,8 @@ a {
   height: 100vh;
 }
 
-.sub-section {
-  overflow: clip;
-
-  border-radius: 10px;
-  background-color: var(--aux);
+.section-title {
+  display: block;
 }
 
 /* Class for element return transition */
@@ -226,6 +221,24 @@ a {
 }
 
 /* Subsections */
+#about-page > .sub-section {
+  height: 50vh;
+  padding: 25px 50px 25px 50px;
+}
+
+.divider {
+  background-color: rgba(0,0,0,0);
+}
+
+
+h1 {
+  font-family: 'Poiret One', 'Tahoma';
+  font-size: 3rem;
+  text-align: center;
+
+  color: var(--main);
+}
+
 
 /* Adds basic effects to beautified text, might expand it later */
 .beautify {
