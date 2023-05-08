@@ -9,6 +9,7 @@
     /*TODO Convert to HEX!*/
     --main: #0000000d;
     --aux: black;
+    --highlight-background: #606060;
 
     --accent1: #fca903;
     --accent2: #0356fc;
@@ -23,9 +24,9 @@
   
     --hover-transition: 0.3s all ease-in-out;
     
-    /*TODO Convert to HEX!*/
     --main: #202124;
     --aux: white;
+    --highlight-background: #a8a8a8;
 
     --accent1: #fca903;
     --accent2: #0033FF;
@@ -65,6 +66,8 @@ body {
 
 a {
   cursor: none;
+  text-decoration: none;
+  color: var(--aux);
 }
 
 .hidden {
@@ -166,9 +169,10 @@ a {
 
   height: 200px;
   border-radius: 10% 0 10% 0;
-  border: 2px solid var(--aux);
+  border: 2px solid white;
 
   transition-property: border-radius;
+  mix-blend-mode: difference;
 }
 
 #intro:hover #pfp {
@@ -200,16 +204,17 @@ a {
   margin: 0;
 }
 
-.sign-desc {
-  margin: 0px;
+.border-left {
+  margin: 0;
 
+  border-left: 2px solid var(--aux);
+  padding-left: 0.5rem;
+  margin-left: 0.2rem;
+}
+.sign-desc {
   font-size: 28px;
   font-family: 'Comfortaa', 'Arial';
   font-weight: 300;
-
-  border-left: 2px solid var(--aux);
-  padding-left: 10px;
-  margin-left: 3px;
 }
 
 #address {
@@ -220,30 +225,72 @@ a {
   margin: 20px 0 0 0;
 }
 
-/* Subsections */
-#about-page > .sub-section {
-  height: 50vh;
-  padding: 25px 50px 25px 50px;
+/* About Page */
+#about-page {
+  display: flex;
+  flex-direction: column;
 }
 
-.divider {
-  background-color: rgba(0,0,0,0);
+/* Contact Page */
+#contact-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
 }
 
+#contact-details {
+  z-index: 5;
+}
 
 h1 {
-  font-family: 'Poiret One', 'Tahoma';
   font-size: 3rem;
-  text-align: center;
-
-  color: var(--main);
+  font-family: 'Poiret One', 'Tahoma';
+  margin-bottom: 1rem;
+  margin-left: 1rem;
 }
 
+.contact-link {
+  font-family: 'Comfortaa', 'Arial';
+  font-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+
+  margin: 5px;
+}
+
+.icon-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.icon {
+  height: 3rem;
+  padding: 5px;
+  margin-left: 0;
+
+  transition-property: height, margin-top;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.showcase {
+  height: 80%;
+  margin-left: 5rem;
+  overflow: hidden;
+}
 
 /* Adds basic effects to beautified text, might expand it later */
 .beautify {
   transition-property: color;
-  transition-duration: 2s;
+  transition-duration: 1s;
 }
 
 .beautify:hover {
@@ -251,6 +298,11 @@ h1 {
 
   transition-property: color, text-shadow;
   transition-timing-function: ease-in-out;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
 }
 
+/*Keep this in to eliminate the flash of unstyled content, check <head> for more.*/
+html {
+  visibility: visible;
+  opacity: 1;
+}

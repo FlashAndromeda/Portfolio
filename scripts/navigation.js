@@ -6,7 +6,7 @@ var currentPage = 0;
 var previousPage = 0;
 // If I don't scroll the main page into view every time, website caching will mess up the count :)
 // Change to $pages[0] for deployment :)
-$pages[0].scrollIntoView();
+$pages[2].scrollIntoView();
 
 const maxPage = $pages.length;
 
@@ -101,7 +101,6 @@ trackPagePosition()
 
 // Hide bars if window size is too small.
 function manageBarVisibility() {
-    console.log('window.innerWidth = ' + window.innerWidth)
     if (window.innerWidth < 1500) {
         $barNavigator.classList.add('hidden')
     } else {
