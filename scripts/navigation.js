@@ -64,11 +64,13 @@ function nextPage() {
 }
 
 function moveToPage(pageIndex) {
+
     previousPage = currentPage;
     currentPage = pageIndex;
     
     $pages[pageIndex].scrollIntoView();
     trackPagePosition();
+
 }
 
 // Page navigation through bars
@@ -90,20 +92,62 @@ function createBarElements() {
 };
 createBarElements()
 
+class Scroll_Indicator_Class {
+    constructor(element)  {
+        this.element = element;
+        this.height = element.offsetHeight;
+        this.width = element.offsetWidth;
+        this.classes = element.classList;
+    }
+
+    // Getters
+    get elementObject() {
+        return this.element;
+    }
+
+    // Methods
+    positionLeft(pos) {
+        this.element.style.left = pos;
+    }
+
+    positionBottom(pos) {
+        this.element.style.bottom = pos;
+    }
+
+};
+
+const $scrollIndicator = document.getElementById('scroll-indicator');
+let scrollIndicatorElement = new Scroll_Indicator_Class($scrollIndicator);
+scrollIndicatorElement.positionLeft('calc(4vw - '+ $barNavigator.offsetWidth + 'px)');
+scrollIndicatorElement.positionBottom(scrollIndicatorElement.width/2 + 'px');
+
+function manageScrollIndicatorVisibility() {
+    if (currentPage > 0) {
+        scrollIndicatorElement.positionBottom('-15vh');
+    } else {
+        scrollIndicatorElement.positionBottom(scrollIndicatorElement.width/2 + 'px');
+    }
+}
+
 const $pageMarkerImg = document.querySelectorAll(".bar-img");
 function trackPagePosition() {
-    $pageMarkerImg[previousPage].classList.remove('bar-img-focused')
+    manageScrollIndicatorVisibility();
+
+    $pageMarkerImg[previousPage].classList.remove('bar-img-focused');
 
     $pageMarkerImg[currentPage].classList.add('bar-img-focused');
 };
-
 trackPagePosition()
 
-// Hide bars if window size is too small.
-function manageBarVisibility() {
-    if (window.innerWidth < 1500) {
-        $barNavigator.classList.add('hidden')
-    } else {
-        $barNavigator.classList.remove('hidden');
+const $aboutContent = document.querySelector('#about-content')
+let is_displayed = false;
+function displayAboutPage() {
+    if (is_displayed == false) { // Move into view
+        is_displayed = true;
+        
+        $aboutContent.style.right = '0';
+    } else if (is_displayed == true) { // Hide from view
+        is_displayed = false;
+        $aboutContent.style.right = '100vw';
     }
 }

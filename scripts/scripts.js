@@ -54,7 +54,7 @@ function changeScheme() {
         $twitter.src = "assets/icons/TwitterLight.svg";
 
 
-        document.documentElement.style.setProperty('--main', '#0000000d');
+        document.documentElement.style.setProperty('--main', 'white');
         document.documentElement.style.setProperty('--aux', 'black');
         document.documentElement.style.setProperty('--highlight-background', '#a8a8a8')
     } else {
@@ -70,4 +70,9 @@ function changeScheme() {
         document.documentElement.style.setProperty('--highlight-background', '#606060')
         
     }
+}
+
+const $themeIndicator = document.querySelector('#theme-indicator')
+function hideThemeIndicator() {
+    $themeIndicator.classList.add('hidden')
 }

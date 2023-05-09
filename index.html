@@ -21,8 +21,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 </head>
 
-<body onkeydown="javascript: onKeyDownFunc(event)" onwheel="javascript: onMouseWheelFunc(event)" onresize="manageBarVisibility()">
-    <nav id="progress-bar" class="hoverable"></nav>
+<body onkeydown="javascript: onKeyDownFunc(event)" onwheel="javascript: onMouseWheelFunc(event)">
+    <p id="scroll-indicator">Scroll down <span class="line"></span></p>
+    <nav id="progress-bar" class="hoverable">
+    </nav>
     <div class="cursor">
         <div class="cursor ball cursor__ball--big">
             <svg height="30" width="30">
@@ -37,7 +39,10 @@
     </div>
     <div class="main-section section" id="welcome-page">
         <div id="intro" class="return-transition">
-            <img id="pfp" src="assets/negative.png" alt="An image of noise art" class="return-transition hoverable" onclick="changeScheme()">
+            <div id="theme-changer" onclick="hideThemeIndicator()">
+                <p id="theme-indicator">Click to change themes!</p>
+                <img id="pfp" src="assets/negative.png" alt="An image of noise art" class="return-transition hoverable" onclick="changeScheme()">
+            </div>
             <div id="signature" class="return-transition">
                 <p id="name"></p>
                 <p class="border-left sign-desc">Software Engineer</p>
@@ -47,7 +52,19 @@
             </div>
         </div>
     </div>
-    <div class="section" id="about-page"></div>
+    <div class="section" id="about-page">
+        <div id="about-title">
+            <h1>About Me</h1>
+            <a class="hoverable noselect" onclick="javascript: displayAboutPage()">Show more</a>
+        </div>
+        <div class="showcase">
+        </div>
+        <div id="about-content">
+            <div class="page-body">
+                <a class="hoverable noselect" id="exitButton" onclick="javascript: displayAboutPage()"><img src="assets/x.svg"></a>
+            </div>
+        </div>
+    </div>
     <div class="section" id="contact-page">
         <div id="contact-details">
             <h1>Get In Touch</h1>
@@ -61,15 +78,22 @@
                 </div>
             </div>          
         </div>
-        <div class="showcase" id="canvas">
-
-        </div>
     </div>
+
     <script src="scripts/scripts.js"></script>
     <script src="scripts/weather.js"></script>
     <script src="scripts/cursor.js"></script>
     <script src="scripts/navigation.js"></script>
     <script src="scripts/progress-bar.js"></script>
-    <script src="scripts/noise.js"></script>
 </body>
 </html>
+
+<!--TODO:   [X] Change weather.js to be "based in cold/freezing/warm Cracow"
+            [X] Add a text indicating to click the image to change themes.
+            [X] Add a text indicating to scroll down when it's necessary.
+            [X] Finish the contact page
+            [ ] page-body needs to take up 80% of the width
+            [ ] Remember to link the CGI Website!
+            [ ] Link github repo of the portfolio!
+            [/] Finish the About Me page
+-->

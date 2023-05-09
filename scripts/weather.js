@@ -1,25 +1,32 @@
 const element = document.querySelector('#weather')
 
 // Fetching the data and then jsonifying it
-let data = fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=apparent_temperature_max,rain_sum&forecast_days=1&timezone=auto')
+let data = fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=apparent_temperature_max&forecast_days=1&timezone=auto')
     .then(response => response.json())
-    .then(json => updateWeather(json.daily.rain_sum[0], json.daily.apparent_temperature_max[0]))
+    .then(json => updateWeather(json.daily.apparent_temperature_max[0]))
 ;
 
 // Updates weather <span> element in accordance with daily precipitation sum :)
-function updateWeather(rain, temp) {
+function updateWeather(temp) {
     // Defaults to nothing in case something goes wrong with the API :) 
     let textContent = ''
-
-    if (rain < 0.1) {
-        textContent += 'sunny';
-        element.style.color = 'var(--accent1)';
-    } else if (rain < 2) {
-        textContent += 'cloudy'
-        element.style.color = 'var(--accent2)'; 
-    } else if (5 < rain) {
-        textContent += 'rainy';
+    console.log('Temperature in Cracow is: ' + temp + '*C');
+    
+    if (temp < 0) { // Below 0*C
+        textContent += 'freezing';
         element.style.color = 'var(--accent2)';
+    } else if (temp < 10) { // 0-10*C
+        textContent += 'cold'
+        element.style.color = 'var(--accent2)'; 
+    } else if (temp < 20) { // 10-20*C
+        textContent += 'warm';
+        element.style.color = 'var(--accent1)';
+    } else if (temp < 30) { // 20-30*C
+        textContent += 'hot';
+        element.style.color = 'var(--accent1)';
+    } else if (30 < temo) { // Over 30*C
+        textContent += 'scorching';
+        element.style.color = 'var(--accent1)';
     };
 
     element.innerHTML = ' ' + textContent + ' ' + temp + '°C';
