@@ -43,6 +43,10 @@ function onKeyDownFunc(event) {
 }
 
 function prevPage() {
+    if (is_displayed == true) {
+        return
+    }
+
     previousPage = currentPage;
 
     if (currentPage > 0) {
@@ -53,6 +57,10 @@ function prevPage() {
 };
 
 function nextPage() {
+    if (is_displayed == true) {
+        return
+    }
+
     previousPage = currentPage;
 
     if (currentPage < maxPage-1) {
@@ -145,9 +153,11 @@ function displayAboutPage() {
     if (is_displayed == false) { // Move into view
         is_displayed = true;
         
-        $aboutContent.style.right = '0';
+        $aboutContent.style.left = '0';
+        $aboutContent.style.opacity = '1';
     } else if (is_displayed == true) { // Hide from view
         is_displayed = false;
-        $aboutContent.style.right = '100vw';
+        $aboutContent.style.left = '100vw';
+        $aboutContent.style.opacity = '0';
     }
 }
