@@ -43,6 +43,7 @@ const $linkedin = document.querySelector("#linkedin");
 const $github = document.querySelector("#github");
 const $replit = document.querySelector("#replit");
 const $twitter = document.querySelector("#twitter");
+const $readcv = document.querySelector("#readcv");
 
 function changeScheme() {
     if (localStorage.getItem('theme') == 'dark') {
@@ -52,6 +53,7 @@ function changeScheme() {
         $github.src = "assets/icons/Github_Light.svg";
         $replit.src = "assets/icons/ReplitLight.svg";
         $twitter.src = "assets/icons/TwitterLight.svg";
+        $readcv.src = "assets/icons/ReadCVLight.svg";
 
 
         document.documentElement.style.setProperty('--main', 'white');
@@ -64,6 +66,7 @@ function changeScheme() {
         $github.src = "assets/icons/Github_Dark.svg";
         $replit.src = "assets/icons/ReplitDark.svg";
         $twitter.src = "assets/icons/TwitterDark.svg";
+        $readcv.src = "assets/icons/ReadCVDark.svg";
 
         document.documentElement.style.setProperty('--main', '#202124');
         document.documentElement.style.setProperty('--aux', 'white');
