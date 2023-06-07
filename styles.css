@@ -9,6 +9,7 @@
     /*TODO Convert to HEX!*/
     --main: #0000000d;
     --aux: black;
+    --highlight-background: #606060;
 
     --accent1: #fca903;
     --accent2: #0356fc;
@@ -23,16 +24,14 @@
   
     --hover-transition: 0.3s all ease-in-out;
     
-    /*TODO Convert to HEX!*/
     --main: #202124;
     --aux: white;
+    --highlight-background: #a8a8a8;
 
     --accent1: #fca903;
     --accent2: #0033FF;
   }
 }
-
-
 
 /* Makes it so clicking links to elements smoothly scrolls to them instead of teleporting. */
 @media (prefers-reduced-motion: no-preference) {
@@ -42,15 +41,24 @@
   }
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 html, body {
+  scrollbar-width: none;
+  box-sizing: border-box;
   background: var(--main);
   color: var(--aux);
+  
+  cursor: none;
 }
 
 body {
   overflow: hidden;
+  height: 100%;
+  width: 100%;
   margin: 0;
-  cursor: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,17 +66,58 @@ body {
 
 a {
   cursor: none;
+  text-decoration: none;
+  color: var(--aux);
+}
+
+.noselect {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 /* Bar Navigation */
+#scroll-indicator {
+  position: fixed;
+  transform: rotate(90deg);
+  margin: 0;
+  opacity: 0.5;
+
+  font-family: 'Comfortaa', 'Arial';
+  font-size: 1.2rem;
+
+  display: flex;
+  align-items: center;
+
+  transition-property: bottom;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(1,-0.32,0,1);
+}
+
+.line {
+  height: 0.2rem;
+  width: 3rem;
+  background: var(--aux);
+  border-radius: 3px;
+  margin: 0.5rem;
+}
+
 #progress-bar {
   position: fixed;
+  z-index: 3;
+
+  transition: opacity 0.2s ease-in-out;
 }
 
 .page-bar {
   display: flex;
   align-items: center;
   padding: 10px;
+  transition-property: visibility;
 }
 
 .bar-img {
@@ -109,7 +158,7 @@ a {
   fill: #fff;
 }
 
-/* Class for main page sections */
+/* Classes for page sections */
 .main-section {
   display: flex;
   justify-content: center;
@@ -120,6 +169,10 @@ a {
   width: 100%;
   max-width: 1300px;
   height: 100vh;
+}
+
+.section-title {
+  display: block;
 }
 
 /* Class for element return transition */
@@ -145,14 +198,23 @@ a {
   transition: 0.3s all ease-in-out;
 }
 
+#theme-indicator {
+  position: absolute;
+  transform: translateX(0.2rem) translateY(-2.3rem);
+  opacity: 0.5;
+
+  font-family: 'Comfortaa', "Arial";
+}
+
 #pfp {
   aspect-ratio: 1/1;
 
   height: 200px;
   border-radius: 10% 0 10% 0;
-  border: 2px solid var(--aux);
+  border: 2px solid white;
 
   transition-property: border-radius;
+  mix-blend-mode: difference;
 }
 
 #intro:hover #pfp {
@@ -184,16 +246,17 @@ a {
   margin: 0;
 }
 
-.sign-desc {
-  margin: 0px;
+.border-left {
+  margin: 0;
 
+  border-left: 2px solid var(--aux);
+  padding-left: 0.5rem;
+  margin-left: 0.2rem;
+}
+.sign-desc {
   font-size: 28px;
   font-family: 'Comfortaa', 'Arial';
   font-weight: 300;
-
-  border-left: 2px solid var(--aux);
-  padding-left: 10px;
-  margin-left: 3px;
 }
 
 #address {
@@ -204,21 +267,173 @@ a {
   margin: 20px 0 0 0;
 }
 
-#pin {
+/* About Page */
+#about-page {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+
+#about-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: (left, position) 0.2s ease-in-out;
+}
+
+#about-title > h1 {
+  font-size: 3rem;
+  font-family: 'Poiret One', 'Tahoma';
+  margin: 0;
+}
+
+#about-title > a {
+  display: inline-block;
+
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 2rem;
+
+  font-family: 'Comfortaa','Arial';
+
+  background-color: var(--aux);
+  color: var(--main);
+
+  transition: font-size 0.01s linear;
+}
+
+#about-title >a:active:hover {
+  font-size: 0.95rem;
+}
+
+.showcase {
+  height: 85%;
+  width: 70%;
+  overflow: hidden;
+
+  background: url('assets/rockframe.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#about-content {
+  position: fixed;
+  top: 0;
+  left: 100vw;
+  z-index: 4;
+
+  height: 100vh;
+  width: 100vw;
+
+  transition-property: left, right, opacity;
+  transition: 1s cubic-bezier(.8,0,.2,1);
+
+  background: var(--main);
+  opacity: 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+.page-body {
+  height: 100vh;
+  width: 60vw;
+}
+
+#exitButton {
+  position: absolute;
+  display: inline-block;
+  height: 2rem;
   aspect-ratio: 1/1;
-  height: 25px;
-  margin: -6px 0 -6px 0;
+  
+  background-color: var(--aux);
+  border-radius: 25%;
+
+  margin: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#exitButton > img {
+  mix-blend-mode: multiply;
+  height: 1rem;
+  width: 1rem;
+}
+
+/* Contact Page */
+#contact-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+#contact-details {
+  z-index: 2;
+}
+
+#contact-details > h1 {
+  font-size: 3rem;
+  font-family: 'Poiret One', 'Tahoma';
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-top: 0;
+}
+
+.contact-link {
+  font-family: 'Comfortaa', 'Arial';
+  font-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+
+  margin: 5px;
+}
+
+.icon-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.icon {
+  height: 3rem;
+  padding: 5px;
+  margin-left: 0;
+
+  transition-property: height, margin-top;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 
 /* Adds basic effects to beautified text, might expand it later */
 .beautify {
   transition-property: color;
-  transition-duration: 2s;
+  transition-duration: 1s;
 }
 
 .beautify:hover {
   color: var(--accent1);
+
   transition-property: color, text-shadow;
   transition-timing-function: ease-in-out;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
+}
+
+/*Keep this in to eliminate the flash of unstyled content, check <head> for more.*/
+html {
+  visibility: visible;
+  opacity: 1;
 }

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
+    <!--Keep this in to eliminate the flash of unstyled content-->
+    <style>html{visibility: hidden;opacity:0;}</style>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=0">
     <link rel="icon" href="assets/pfp.png">
-    <script src="https://kit.fontawesome.com/74679502e4.js" crossorigin="anonymous"></script>
 
-    <title>Michał Fleites-Jończyk | Portfolio</title>
+    <title>Michał Fleites | Portfolio</title>
     <meta name="description" content="Hi! My name is Michał Fleites-Jończyk, I'm a software developer from Poland and this website is my portfolio!">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,11 +17,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 </head>
+
 <body onkeydown="javascript: onKeyDownFunc(event)" onwheel="javascript: onMouseWheelFunc(event)">
-    <nav id="progress-bar" class="hoverable"></nav>
-    
+    <p id="scroll-indicator">Scroll down <span class="line"></span></p>
+    <nav id="progress-bar" class="hoverable">
+    </nav>
     <div class="cursor">
         <div class="cursor ball cursor__ball--big">
             <svg height="30" width="30">
@@ -32,38 +37,65 @@
             </svg>
         </div>
     </div>
-
     <div class="main-section section" id="welcome-page">
         <div id="intro" class="return-transition">
-            <img id="pfp" src="assets/negative.png" class="return-transition hoverable" onclick="changeScheme()">
+            <div id="theme-changer" onclick="hideThemeIndicator()">
+                <p id="theme-indicator">Click to change themes!</p>
+                <img id="pfp" src="assets/negative.png" alt="An image of noise art" class="return-transition hoverable" onclick="changeScheme()">
+            </div>
             <div id="signature" class="return-transition">
                 <p id="name"></p>
-                <p class="sign-desc">Software Developer</p>
-                <p class="sign-desc">Designer</p>
-                <p class="sign-desc">Artist</p>
+                <p class="border-left sign-desc">Software Engineer</p>
+                <p class="border-left sign-desc">Designer</p>
+                <p class="border-left sign-desc">Artist</p>
                 <p id="address">based in<span id="weather"></span> Cracow, Poland</p>
             </div>
         </div>
     </div>
-    <div class="section" id="about-page">
-        <h1></h1>
-        <div class="sub-section"></div>
-        <div class="sub-section"></div>
-        <div class="sub-section"></div>
-        <div class="sub-section"></div>
-        <div class="sub-section"></div>
-    </div>
-    <div class="section" id="skills-page">
-    </div>
-    <div class="section" id="projects-page">
-    </div>
+    <!-- <div class="section" id="about-page">
+        <div id="about-title">
+            <h1>About Me</h1>
+            <a class="hoverable noselect" onclick="javascript: displayAboutPage()">Show more</a>
+        </div>
+        <div class="showcase">
+        </div>
+        <div id="about-content">
+            <div class="page-body">
+                <a class="hoverable noselect" id="exitButton" onclick="javascript: displayAboutPage()"><img src="assets/x.svg"></a>
+                <div class="page-title"></div>
+            </div>
+        </div>
+    </div> -->
     <div class="section" id="contact-page">
+        <div id="contact-details">
+            <h1>Get In Touch</h1>
+            <div class="border-left">
+                <a class="hoverable contact-link" target="_blank" href="mailto:michalfleites@gmail.com" id="mail-link"></a>
+                <div class="icon-list">
+                    <a class="hoverable contact-link" target="_blank" href="https://www.linkedin.com/in/michalfleites/"><img id="linkedin" class="icon" src="assets/icons/LinkedDark.svg"></a>
+                    <a class="hoverable contact-link" target="_blank" href="https://read.cv/flashandromeda"><img id="readcv" class="icon" src="assets/icons/ReadCVDark.svg"></a>
+                    <a class="hoverable contact-link" target="_blank" href="https://github.com/FlashAndromeda"><img id="github" class="icon" src="assets/icons/Github_Dark.svg"></a>
+                    <a class="hoverable contact-link" target="_blank" href="https://replit.com/@FlashAndromeda"><img id="replit" class="icon" src="assets/icons/ReplitDark.svg"></a>
+                    <a class="hoverable contact-link" target="_blank" href="https://twitter.com/FlashAndromeda"><img id="twitter" class="icon" src="assets/icons/TwitterDark.svg"></a>
+                </div>
+            </div>          
+        </div>
     </div>
 
-    <script src="weather.js"></script>
-    <script src="cursor.js"></script>
-    <script src="scripts.js"></script>
-    <script src="navigation.js"></script>
-    <script src="progress-bar.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/weather.js"></script>
+    <script src="scripts/cursor.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/progress-bar.js"></script>
 </body>
 </html>
+
+<!--TODO:   [X] Change weather.js to be "based in cold/freezing/warm Cracow"
+            [X] Add a text indicating to click the image to change themes.
+            [X] Add a text indicating to scroll down when it's necessary.
+            [X] Finish the contact page
+            [ ] page-body needs to take up 80% of the width
+            [ ] Remember to link the CGI Website!
+            [ ] Link github repo of the portfolio!
+            [/] Finish the About Me page
+-->
