@@ -24,7 +24,7 @@ function updateWeather(temp) {
     } else if (temp < 30) { // 20-30*C
         textContent += 'hot';
         element.style.color = 'var(--accent1)';
-    } else if (30 < temo) { // Over 30*C
+    } else if (30 < temp) { // Over 30*C
         textContent += 'scorching';
         element.style.color = 'var(--accent1)';
     };
