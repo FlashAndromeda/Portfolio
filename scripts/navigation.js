@@ -2,8 +2,7 @@ const prevPageButton = document.querySelector('#prev-page');
 const nextPageButton = document.querySelector('#next-page');
 const $pages = document.querySelectorAll('.section');
 
-const $body = document.querySelectorAll('body');
-$body.addEventListener("wheel", (event) => onMouseWheelFunc(event));
+document.body.addEventListener("wheel", (event) => onMouseWheelFunc(event));
 
 var currentPage = 0;
 var previousPage = 0;
