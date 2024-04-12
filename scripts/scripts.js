@@ -75,6 +75,8 @@ function changeScheme() {
     }
 }
 
+changeScheme();
+
 const $themeIndicator = document.querySelector('#theme-indicator')
 function hideThemeIndicator() {
     $themeIndicator.classList.add('hidden')
