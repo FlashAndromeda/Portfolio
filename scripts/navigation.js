@@ -2,7 +2,7 @@ const prevPageButton = document.querySelector('#prev-page');
 const nextPageButton = document.querySelector('#next-page');
 const $pages = document.querySelectorAll('.section');
 
-document.body.addEventListener("wheel", (event) => onMouseWheelFunc(event));
+document.addEventListener("wheel", (event) => onMouseWheelFunc(event));
 
 var currentPage = 0;
 var previousPage = 0;
@@ -25,9 +25,11 @@ function onMouseWheelFunc(event) {
     if (timeDiff > timeLimit) {
         if (event.deltaY == '-102') {
             prevPage();
+            console.log('scroll to prev');
         }
         if (event.deltaY == '102') {
             nextPage();
+            console.log('scroll to next');
         }
         prevTime = new Date().getTime();
     }
