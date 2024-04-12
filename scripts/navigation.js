@@ -15,6 +15,7 @@ const maxPage = $pages.length;
 // Mousewheel controls
 var prevTime = 0
 function onMouseWheelFunc(event) {
+    console.log('mousewheel fired off');
     //Throttling it so you can't scroll 2137 times a second :)
     curTime = new Date().getTime();
     timeDiff = curTime - prevTime;
