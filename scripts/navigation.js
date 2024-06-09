@@ -24,11 +24,11 @@ function onMouseWheelFunc(event) {
     const timeLimit = 500;
 
     if (timeDiff > timeLimit) {
-        if (event.deltaY == '-102') {
+        if (event.deltaY < 0) {
             prevPage();
             console.log('scroll to prev');
         }
-        if (event.deltaY == '102') {
+        if (event.deltaY > 0) {
             nextPage();
             console.log('scroll to next');
         }
